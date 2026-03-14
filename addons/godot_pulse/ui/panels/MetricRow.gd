@@ -19,7 +19,11 @@ func _init() -> void:
 	
 	_graph = Control.new()
 	_graph.custom_minimum_size = Vector2(50, 20)
-	_graph.set_script(load("res://addons/godot_pulse/ui/widgets/MiniGraph.gd"))
+	# Dynamically construct path to MiniGraph in sibling widgets directory
+	var panels_dir = get_script().get_path().get_basename()
+	var widgets_dir = panels_dir.get_basename()  # Go up to ui directory
+	var mini_graph_path = widgets_dir + "/widgets/MiniGraph.gd"
+	_graph.set_script(load(mini_graph_path))
 	
 	add_child(_label)
 	add_child(_value_label)

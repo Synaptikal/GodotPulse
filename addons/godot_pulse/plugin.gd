@@ -9,7 +9,10 @@ func _enter_tree() -> void:
 
 	# Check if we have .NET support before registering the C# autoload
 	if OS.has_feature("dotnet"):
-		add_autoload_singleton("GodotPulse", "res://addons/godot_pulse/autoload/GodotPulse.cs")
+		# Dynamically construct autoload path based on plugin location
+		var plugin_dir = get_script().get_path().get_basename().get_basename()
+		var autoload_path = plugin_dir + "/autoload/GodotPulse.cs"
+		add_autoload_singleton("GodotPulse", autoload_path)
 	else:
 		printerr("GodotPulse: .NET support not detected. Core sampling will be disabled.")
 

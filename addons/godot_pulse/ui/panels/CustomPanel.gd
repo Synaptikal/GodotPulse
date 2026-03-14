@@ -50,6 +50,9 @@ func _process(_delta: float) -> void:
 
 func _create_metric_row(name: String) -> HBoxContainer:
 	var row = HBoxContainer.new()
-	row.set_script(load("res://addons/godot_pulse/ui/panels/MetricRow.gd"))
+	# Dynamically construct path relative to this script
+	var current_dir = get_script().get_path().get_basename()
+	var metric_row_path = current_dir + "/MetricRow.gd"
+	row.set_script(load(metric_row_path))
 	row.set_meta("metric_name", name)
 	return row

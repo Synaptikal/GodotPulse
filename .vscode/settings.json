@@ -12,6 +12,7 @@
         },
         "tar": true,
         "git config": true,
-        "git commit": true
+        "git commit": true,
+        "git add": true
     }
 }
