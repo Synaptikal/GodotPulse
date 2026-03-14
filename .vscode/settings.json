@@ -10,6 +10,8 @@
             "approve": true,
             "matchCommandLine": true
         },
-        "tar": true
+        "tar": true,
+        "git config": true,
+        "git commit": true
     }
 }
