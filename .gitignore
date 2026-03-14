@@ -1,17 +1,66 @@
+# Development Tools
 .blackboxcli/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Godot
+# Godot Engine
 .godot/
 *.tmp
 *.import
+export_presets.cfg
+.godot_project_settings.ini
 
 # C# / .NET
 bin/
 obj/
 .vs/
+.vscode/
 *.user
 *.suo
+*.csproj.user
+*.sln.DotSettings
+*.sln.DotSettings.user
+packages/
+.nuget/
 
-# OS
+# Build Artifacts
+/build/
+/dist/
+*.pdb
+*.log
+
+# Test Results
+TestResults/
+*.trx
+
+# OS & Environment
 .DS_Store
 Thumbs.db
+.env
+.env.local
+*.bak
+
+# IDE
+.vs/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Temporary Files
+*.tmp
+*.temp
+*.cache
+.cache/
+
+# OS Specific
+desktop.ini
+.directory
+ehthumbs.db
+
+# Archives (but keep plugin distribution)
+*.zip
+!godot_pulse_*.zip
