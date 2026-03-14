@@ -6,6 +6,11 @@
 *.swo
 *~
 
+# Internal/Setup Files (should not be pushed to repo)
+GITHUB_SETUP_CHECKLIST.md
+ASSET_STORE_DESCRIPTION.md
+INSTALLATION.md
+
 # Godot Engine
 .godot/
 *.tmp
