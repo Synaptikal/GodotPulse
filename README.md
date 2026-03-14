@@ -10,17 +10,17 @@
 
 GodotPulse provides real-time performance monitoring directly in your game with minimal overhead. Toggle the overlay during gameplay with a hotkey to inspect engine metrics, .NET runtime statistics, and custom metrics.
 
-### Key Features
+### Features
 
-- 🎮 **In-Game Overlay** - Real-time performance monitoring with toggleable UI
-- 📊 **Runtime Metrics** - Managed heap size, GC collections (Gen 0/1/2), GC pause durations
-- ⚙️ **Engine Metrics** - FPS, frame time, draw calls, VRAM usage, physics bodies, node counts
-- 📈 **GC Visualization** - Red flash on FPS graph when garbage collection occurs
-- 🔧 **Custom Metrics API** - Easily register and track user-defined metrics
-- 📝 **Event Log** - Integrated performance event logging
-- 🚀 **Export Safe** - Automatically disabled in release builds (configurable)
-- ⌨️ **Configurable Hotkey** - Customize toggle key in Project Settings
-- 🎯 **Zero Overhead (When Disabled)** - No performance impact when overlay is off
+- In-game performance overlay - toggle with F3 during gameplay
+- Runtime metrics: managed heap size, GC collections (Gen 0/1/2), GC pause durations
+- Engine metrics: FPS, frame time, draw calls, VRAM, physics bodies, node counts
+- GC visualization on FPS graph (red flash when GC occurs)
+- Custom metrics API for game-specific tracking
+- Event log for performance events
+- Automatically disabled in release builds (configurable)
+- Customizable hotkey via Project Settings
+- Zero overhead when disabled
 
 ## Requirements
 
@@ -40,43 +40,42 @@ GodotPulse provides real-time performance monitoring directly in your game with 
 3. **Enable** the plugin in **Project → Project Settings → Plugins**
 4. **Done!** The autoload will initialize automatically
 
-### Basic Usage
+### Usage
 
-**Toggle the overlay during gameplay:**
-- Press `F3` (or your custom binding)
+**Toggle the overlay:**
+- Press `F3` during gameplay (or bind a custom key in Project Settings > Input Map > godot_pulse_toggle)
 
-**Change the hotkey:**
-1. Open **Project → Project Settings → Input Map**
-2. Find `godot_pulse_toggle`
-3. Modify the key binding
-
-**Register custom metrics:**
+**Track custom metrics:**
 ```csharp
-// Add a custom metric
+// Register a metric
 GodotPulse.RegisterMetric("AI/Enemies", () => EnemyManager.Count);
 
 // Log performance events
 GodotPulse.LogEvent("Boss spawned", GodotPulse.EventLevel.Warning);
 ```
 
-For detailed usage, see [full documentation](addons/godot_pulse/README.md).
+See [full documentation](addons/godot_pulse/README.md) for the complete API.
 
 ## Documentation
 
-- 📖 [Full API Documentation](addons/godot_pulse/README.md)
-- 🔧 [Configuration Guide](addons/godot_pulse/README.md#configuration)
-- 🎨 [Customization & Theming](addons/godot_pulse/theme/)
-- 🧪 [Testing & Building](CONTRIBUTING.md#building-from-source)
+- [Full API Documentation](addons/godot_pulse/README.md)
+- [Configuration Guide](addons/godot_pulse/README.md#configuration)
+- [Theme Customization](addons/godot_pulse/theme/)
+- [Building from Source](CONTRIBUTING.md#building-from-source)
 
-## Installation Methods
+## Installation
 
-### Method 1: Asset Store (Recommended)
-Install directly from the [Godot Asset Store](https://godotengine.org/asset-library)
+**Using Godot Asset Library (recommended):**
+1. Open Asset Library in the Godot editor
+2. Search for "GodotPulse"
+3. Download and install
 
-### Method 2: GitHub Releases
-Download and extract the latest release to your `addons/` folder
+**Manual installation:**
+1. Download the latest release from [Releases](../../releases)
+2. Extract `addons/godot_pulse` to your project's `addons/` folder
+3. Enable the plugin in Project Settings > Plugins
 
-### Method 3: From Source
+**From source:**
 ```bash
 git clone https://github.com/Synaptikal/GodotPulse.git
 cp -r GodotPulse/addons/godot_pulse your-project/addons/
@@ -84,20 +83,16 @@ cp -r GodotPulse/addons/godot_pulse your-project/addons/
 
 ## Compatibility
 
-| Feature | Support |
-|---------|---------|
-| Export Builds | ✅ Automatically disabled in release builds |
-| Multiplayer | ✅ Each peer has independent overlay instance |
-| Mobile (Android/iOS) | ⚠️ Requires System.Text.Json support testing |
-| GDScript Integration | ✅ Full C# ↔ GDScript interoperability |
+| Feature | Status |
+|---------|--------|
+| Export Builds | Automatically disabled in release builds |
+| Multiplayer | Each peer has independent overlay instance |
+| Mobile (Android/iOS) | Requires System.Text.Json support testing |
+| GDScript Integration | Full C# ↔ GDScript interoperability |
 
 ## Contributing
 
-We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on:
-- Code style and standards
-- Submitting bug reports
-- Proposing features
-- Pull request process
+Interested in contributing? Check out [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on code style, bug reports, feature proposals, and PRs.
 
 ## Known Limitations
 
@@ -118,16 +113,12 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file
 
 See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
 
-## Support & Community
+## Support
 
-- 🐛 [Report Issues](../../issues)
-- 💬 [Discussions](../../discussions)
-- 📧 Email: justin@synaptikal.dev
+- [Report Issues](../../issues)
+- [Discussions](../../discussions)
+- Email: justin@synaptikal.dev
 
 ## Author
 
 **Justin Davis** - [Synaptikal](https://github.com/Synaptikal)
-
----
-
-**Made with ❤️ for the Godot community**
