@@ -1,0 +1,17 @@
+.blackboxcli/
+
+# Godot
+.godot/
+*.tmp
+*.import
+
+# C# / .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db

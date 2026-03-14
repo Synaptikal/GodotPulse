@@ -1,0 +1,56 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    name: Build & Unit Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Godot Engine
+      uses: godotengine/godot-setup-action@v5
+      with:
+        godot-version: 4.4.0
+        dotnet: true
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore GoDotPulse.sln
+    
+    - name: Build (Debug)
+      run: dotnet build -c Debug --no-restore GoDotPulse.sln
+    
+    - name: Build (Release)
+      run: dotnet build -c Release --no-restore GoDotPulse.sln
+    
+    - name: Run unit tests
+      run: dotnet test --no-build --verbosity normal GoDotPulse.sln --logger "console;verbosity=detailed"
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Check formatting with dotnet format
+      run: dotnet format --verify-no-changes GoDotPulse.sln
+      continue-on-error: true

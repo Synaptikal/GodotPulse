@@ -1,0 +1,14 @@
+config_version=5
+
+[application]
+
+config/name="GoDotPulse"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+
+[dotnet]
+
+project/assembly_name="GoDotPulse"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_pulse/plugin.cfg")
